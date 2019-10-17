@@ -8,13 +8,11 @@
       <input type="checkbox" name="Trad" value="Trad">Trad<br>
       <input type="checkbox" name="Sport" value="Sport">Sport<br>
       <input type="checkbox" name="Some Gear" value="Some Gear">Some Gear<br>
-      <input type="checkbox" name="Top Rope" value="Top Rope" checked>Top Rope<br><br>
+      <input type="checkbox" name="Top Rope" value="Top Rope">Top Rope<br><br>
     </form>
 
     <h2>From Grade</h2>
     <select>
-      <option value="3rd">3rd</option>
-      <option value="4th">4th</option>
       <option value="5.0">5.0</option>
       <option value="5.1">5.1</option>
       <option value="5.2">5.2</option>
@@ -53,8 +51,6 @@
 
     <h2>To Grade</h2>
     <select>
-      <option value="3rd">3rd</option>
-      <option value="4th">4th</option>
       <option value="5.0">5.0</option>
       <option value="5.1">5.1</option>
       <option value="5.2">5.2</option>
