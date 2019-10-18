@@ -4,7 +4,7 @@ Name:
 ClimApp
 
 Description:
-An App for users to find climbing routes that match their experience level, equiptment capability, and by rating. 
+An App for users to find climbing routes that match their experience level, equiptment needed, and by rating. 
 
 First edition to include all the kernal elements required for the Greenfield/MVP project:
 

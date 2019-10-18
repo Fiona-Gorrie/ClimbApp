@@ -24,9 +24,5 @@ def add_header(req):
     req.headers["Cache-Control"] = "no-cache"
     return req   
 
-@app.route('/todos', methods = ['GET'])
-def serve_all_todos():
-    return jsonify({"items": todos})
-
 if __name__ =="__main__":
     app.run(debug=True)    
