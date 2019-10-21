@@ -1,28 +1,16 @@
-from flask import Flask, render_template, jsonify
+import os
+from flask import Flask, render_template, jsonify, request
+from sql_alchemy_db import db
 
-todos = ['study vue', 'study flask', 'study toy problems']
+def create_app():
+    app = Flask(__name__,
+        static_folder = "./dist/static",
+        template_folder = "./dist"
+    )
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///climbApp.db"
+    app.config['SQLALCHEMY_ECHO'] = True
+    db.init_app(app)
+    #app.register_blueprint(todos_api)
 
-#all of our static stuff that doesn't change is going to live inside of 
-# dist/static as will our templates folder
-app = Flask(__name__,
-    static_folder = "./dist/static",
-    template_folder = "./dist"
-)
+    return app
 
-@app.route('/')
-def serve_vue_app():
-    """
-    Server our vue app
-     """
-    return(render_template('index.html'))
-
-@app.after_request
-def add_header(req):
-    """
-    Clear Cache for hot-reloading
-    """
-    req.headers["Cache-Control"] = "no-cache"
-    return req   
-
-if __name__ =="__main__":
-    app.run(debug=True)    

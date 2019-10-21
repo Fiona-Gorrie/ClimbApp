@@ -7,7 +7,6 @@
 
 <script>
 import ClimbApp from './components/ClimbApp.vue'
-
 export default {
   name: 'app',
   components: {

@@ -34,13 +34,11 @@
 </template>
 
 <script>
-
 import axios from 'axios';
 import StarRating from 'vue-star-rating';
 export default {
   name: 'ClimbApp',
   props: ['title'],
-
   
   data() {
     return {
@@ -80,7 +78,6 @@ export default {
         "5.15c",
         "15d"
       ],
-
       climbTypes: [
         "Trad",
         "Sport",
