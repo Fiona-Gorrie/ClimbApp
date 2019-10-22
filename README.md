@@ -37,10 +37,13 @@ pipenv run python main.py
 To get Vue running, do the following from the project's root in an additional terminal screen:
 cd client
 npm install
+npm install vue-star-rating
 npm run serve
 
 Roadmap:
 Future editions may include:
+
+Seperate table containing climb grades
 
 Weather information for the climbing area
 
