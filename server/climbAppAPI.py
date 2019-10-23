@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from sql_alchemy_db_instance import db
+from sql_alchemy_db import db
 from models import Climb
 
 climbApp_api = Blueprint('climbApp_api', __name__)
@@ -7,9 +7,9 @@ climbApp_api = Blueprint('climbApp_api', __name__)
 @climbApp_api.route('/climbs', methods=['GET'])
 def serve_all_climbs():
     climb_instances = db.session.query(Climb).all()
-    climb_items = [{"id": climb.id, "climbName": climb.climbName, "climbType": climb.climbType, "climbGrade": climb.climbGrade, 
-    "climbRating": climb.climbRating} for climb in climb_instances]
-    return jsonify({"climb_name": climb_climbNames})
+    climb_items = [{"id": climb.id, "climb name": climb.climbName, "climb type": climb.climbType, "climb grade": climb.climbGrade, 
+    "climb rating": climb.climbRating} for climb in climb_instances]
+    return jsonify({"climb": climb_items})
 
 """@climbApp_api.route('/todo', methods=['POST'])
 def add_todo():
