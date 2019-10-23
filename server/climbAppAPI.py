@@ -1,27 +1,17 @@
 from flask import Blueprint, jsonify, request
-from sql_alchemy_db import db
+from sql_alchemy_db_instance import db
 from models import Climb
 
 climbApp_api = Blueprint('climbApp_api', __name__)
-
-#This queries the db and returns the info listed in climb_items 
+ 
 @climbApp_api.route('/climbs', methods=['GET'])
 def serve_all_climbs():
     climb_instances = db.session.query(Climb).all()
-    climb_items = [
-        {
-            "id": climb.id,
-            "climbName": climb.climbName,
-            "climbType": climb.climbType,
-            "climbGrade": climb.climbGrade, 
-            "climbRating": climb.climbRating
-        } for climb in climb_instances
-    ]
-    return jsonify({"climbs": climb_items})
+    climb_items = [{"id": climb.id, "climbName": climb.climbName, "climbType": climb.climbType, "climbGrade": climb.climbGrade, 
+    "climbRating": climb.climbRating} for climb in climb_instances]
+    return jsonify({"climb_name": climb_climbNames})
 
-"""
-For users to create their own climbs
-@climbApp_api.route('/todo', methods=['POST'])
+"""@climbApp_api.route('/todo', methods=['POST'])
 def add_todo():
     new_todo = Todo()
     new_todo.item = request.json["item"]
