@@ -1,6 +1,5 @@
 from app import create_app, setup_database
-from flask import render_template
-from seed import data 
+from flask import render_template 
 
 def add_vue_routes(app):
     @app.route('/')

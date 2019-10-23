@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, jsonify, request
 from sql_alchemy_db import db
 from climbAppAPI import climbApp_api
+from seed import csv_to_db
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 project_paths = project_dir.split("/")
@@ -24,5 +25,8 @@ def create_app():
 
 def setup_database(app):
     with app.app_context():
-        db.create_all()    
+        db.create_all() 
+
+
+
 
