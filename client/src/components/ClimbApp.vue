@@ -5,7 +5,7 @@
     <h1>Climb Type</h1>
 
   <!-- User selects Type of climb -->
-    <select name="climbType" @change="onChange($event)">
+    <select name="climbType" v-model="selectedType">
       <option
         id="climbType"  
         v-for="climbType in climbTypes"> {{climbType}} </option>            
@@ -15,7 +15,7 @@
 
     <!-- User selects difficulty of climb -->
     
-     <select name="selectGrade" @change="onChange($event)">
+     <select name="selectGrade" v-model="selectedGrade">
       <option
         id="select-grade"  
         v-for="grade in grades"> {{grade}} </option>            
@@ -29,6 +29,12 @@
                 v-bind:max-rating="4">
     </star-rating>
 
+    <button @click="display_data">Submit</button>
+
+    <p>{{selectedType}} {{selectedGrade}}</p>
+    <ul>
+      <li></li>
+    </ul>
   </div>
   
 </template>
@@ -83,7 +89,10 @@ export default {
         "Sport",
         "Some Gear",
         "Top Rope"
-      ],  
+      ],
+      selectedType: '', 
+      selectedGrade: '',
+      array_of_response_data: [],
       
       rating: 2
     }
@@ -93,12 +102,24 @@ export default {
   },
   methods: {
     onChange(event) {
-      console.log(event.target.value)
+      return (event.target.value)
     },
     setRating(rating){
       this.rating = rating;
       console.log(this.rating)
-    }
+    },
+    display_data() {
+      axios.post("/climbData", {
+        selected_climb_type: this.selectedType,
+        selected_climb_grade: this.selectedGrade
+      })
+      .then(response=>( 
+        this.array_of_response_data=response))
+    },
+    displayResult() {
+      axios.get('/climbResult').then(response=>( 
+        this.array_of_response_data=response));
+    },  
   }
 }  
 </script>

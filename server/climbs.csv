@@ -1,3 +1,11 @@
 climbName,climbType,climbGrade,climbRating
-random name,Trad,5.10,4
-second random name,Sport,5.10b,3 
+5.10 name,Trad,5.10,1
+5.10 second name,Sport,5.10,2 
+5.10a name,Some Gear,5.10a,3
+5.10a second name,Top Rope,5.10a,4
+5.10b name,Trad,5.10b,1
+5.10b second name,Sport,5.10b,2
+5.10c name,Some Gear,5.10c,3
+5.10c second name,Top Rope,5.10c,4
+5.10d name,Trad,5.10d,1
+5.10d second name,Sport,5.10d,2

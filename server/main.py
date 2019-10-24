@@ -1,4 +1,4 @@
-from app import create_app, setup_database, seed_db, df
+from app import create_app, setup_database, seed_db
 from flask import render_template 
 
 
@@ -23,5 +23,5 @@ if __name__ == '__main__':
     app = create_app()
     add_vue_routes(app)
     setup_database(app)
-    seed_db(app, df)
+    seed_db(app)
     app.run(debug=True)    

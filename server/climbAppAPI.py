@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from sql_alchemy_db import db
-from models import Climb
+from models import Climbs
 
 climbApp_api = Blueprint('climbApp_api', __name__)
  
@@ -11,20 +11,16 @@ def serve_all_climbs():
     "climb rating": climb.climbRating} for climb in climb_instances]
     return jsonify({"climb": climb_items})
 
-"""@climbApp_api.route('/todo', methods=['POST'])
-def add_todo():
-    new_todo = Todo()
-    new_todo.item = request.json["item"]
-    new_todo.done = False
-    db.session.add(new_todo)
-    db.session.commit()
-    return jsonify(success=True)
+@climbApp_api.route('/climbData', methods=['POST'])
+def return_climb_data():
+    climb_type = request.json["selected_climb_type"]
+    climb_grade = request.json["selected_climb_grade"]
+    return jsonify(climb_type=climb_type, climb_grade=climb_grade)
 
-@climbApp_api.route('/todo', methods=['PATCH'])
-def toggle_done():
-    todo_id = request.json["id"]
-    target_todo = db.session.query(Todo).filter_by(id=todo_id).first()
-    target_todo.done = not target_todo.done
-    db.session.add(target_todo)
-    db.session.commit()
-    return jsonify(success=True)"""
+@climbApp_api.route('/climbResult', methods=['GET'])
+def find_climb():
+    climb_data = Climbs.query.all()
+    print(climb_data)
+    #matching_climb = [climb.climb_name for climb in climb_data]
+    climb_array = [climb.climb_name for climb in climb_data]
+    return jsonify(climb_array = climb_array)

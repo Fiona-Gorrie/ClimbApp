@@ -3,6 +3,7 @@ from flask import Flask, render_template, jsonify, request
 from sql_alchemy_db import db
 from climbAppAPI import climbApp_api
 import pandas as pd
+#from sqlalchemy import create_engine
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 project_paths = project_dir.split("/")
@@ -27,11 +28,10 @@ def setup_database(app):
     with app.app_context():
         db.create_all() 
 
-df = pd.read_csv("climbs.csv")
+def seed_db(app):
+    df = pd.read_csv("climbs.csv")
+    with app.app_context():
+        df.to_sql(name='climbs', con=db.engine, index=False, if_exists='append')
 
-def seed_db(df, app):
-    with app.app_context(app, df):
-        df.to_sql(name='Climbs', con=db, index=False, if_exists='append')
-
-
+#engine = create_engine('sqlite:///foo.db')
 
