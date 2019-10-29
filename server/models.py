@@ -7,14 +7,15 @@ class Climbs(db.Model):
     climbGrade = db.Column(db.String(4))
     climbRating = db.Column(db.Integer())
     
-class Type(db.Model):   
-    id = db.Column(db.Integer, primary_key=True)
-    gradeDifficulty = db.Column(db.String(10))
+# class Type(db.Model):   
+#     id = db.Column(db.Integer, primary_key=True)
+#     gradeDifficulty = db.Column(db.String(10))
 
-class Grade(db.Model):   
-    id = db.Column(db.Integer, primary_key=True)
-    gradeDifficulty = db.Column(db.String(5))   
+# class Grade(db.Model):   
+#     id = db.Column(db.Integer, primary_key=True)
+#     gradeDifficulty = db.Column(db.String(5))   
 
 #later additions:
-#climb_description = db.Column(db.String(1000))
+#user id and password
 #add done = db.Column(db.Boolean) to climb for user to check
+#climb_description = db.Column(db.String(1000))

@@ -31,7 +31,6 @@ def setup_database(app):
 def seed_db(app):
     df = pd.read_csv("climbs.csv")
     with app.app_context():
-        df.to_sql(name='climbs', con=db.engine, index=False, if_exists='append')
+        df.to_sql(name='climbs', con=db.engine, index_label='id', if_exists='replace')
 
-#engine = create_engine('sqlite:///foo.db')
 

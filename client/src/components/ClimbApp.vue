@@ -29,7 +29,7 @@
                 v-bind:max-rating="4">
     </star-rating>
 
-    <button @click="display_data">Submit</button>
+    <button @click="filteredClimbs">Submit</button>
 
     <p>{{selectedType}} {{selectedGrade}}</p>
     <ul>
@@ -49,16 +49,16 @@ export default {
   data() {
     return {
       grades: [
-        "5.0",
-        "5.1",
-        "5.2",
-        "5.3",
-        "5.4",
-        "5.5",
-        "5.6",
-        "5.7",
-        "5.8",
-        "5.9",
+        // "5.0",
+        // "5.1",
+        // "5.2",
+        // "5.3",
+        // "5.4",
+        // "5.5",
+        // "5.6",
+        // "5.7",
+        // "5.8",
+        // "5.9",
         "5.10a",
         "5.10b",
         "5.10c",
@@ -67,22 +67,22 @@ export default {
         "5.11b",
         "5.11c",
         "5.11d",
-        "5.12a",
-        "5.12b",
-        "5.12c",
-        "5.12d",
-        "5.13a",
-        "5.13b",
-        "5.13c",
-        "5.13d",
-        "5.14a",
-        "5.14b",
-        "5.14c",
-        "5.14d",
-        "5.15a",
-        "5.15b",
-        "5.15c",
-        "15d"
+        // "5.12a",
+        // "5.12b",
+        // "5.12c",
+        // "5.12d",
+        // "5.13a",
+        // "5.13b",
+        // "5.13c",
+        // "5.13d",
+        // "5.14a",
+        // "5.14b",
+        // "5.14c",
+        // "5.14d",
+        // "5.15a",
+        // "5.15b",
+        // "5.15c",
+        // "15d"
       ],
       climbTypes: [
         "Trad",
@@ -101,21 +101,29 @@ export default {
     StarRating
   },
   methods: {
-    onChange(event) {
-      return (event.target.value)
-    },
+    // onChange(event) {
+    //   return (event.target.value)
+    // },
     setRating(rating){
       this.rating = rating;
       console.log(this.rating)
     },
-    display_data() {
-      axios.post("/climbData", {
-        selected_climb_type: this.selectedType,
-        selected_climb_grade: this.selectedGrade
-      })
-      .then(response=>( 
-        this.array_of_response_data=response))
-    },
+    filteredClimbs() { 
+      climbs.filter(climb => {
+    console.log (
+      climb.climbType === selectedType &&
+      climb.climbGrade === selectedGrade
+      )
+    })
+  },
+    // display_data() {
+    //   axios.post("/climbData", {
+    //     selected_climb_type: this.selectedType,
+    //     selected_climb_grade: this.selectedGrade
+    //   })
+    //   .then(response=>( 
+    //     this.array_of_response_data=response))
+    // },
     displayResult() {
       axios.get('/climbResult').then(response=>( 
         this.array_of_response_data=response));
