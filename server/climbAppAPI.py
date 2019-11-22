@@ -19,9 +19,14 @@ def return_climb_data():
     climb_grade = request.json["selected_climb_grade"]
     return jsonify(climb_type=climb_type, climb_grade=climb_grade)
 
-@climbApp_api.route('/climbResult', methods=['GET'])
+@climbApp_api.route('/allClimbNames', methods=['GET'])
 def find_climb():
     climb_data = Climbs.query.all()
-    #matching_climb = [climb.climb_name for climb in climb_data]
     climb_array = [climb.climbName for climb in climb_data]
     return jsonify(climb_array = climb_array)
+
+# @climbApp_api.route('/searchClimb', methods=['GET'])
+# def find_climb():
+#     climb_data = Climbs.query()
+#     climb_array = [climb.climbName for climb in climb_data]
+#     return jsonify(climb_array = climb_array)
